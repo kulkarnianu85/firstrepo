@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test-suite basedir="" executed-by="anujak" execution-date="2019-06-24 16:04:30" hfile="QFTestReport_report.html" host="actaea" java-version="1.8.0_152-b16" name="P:/Mdf/TeamBank/8162_TeBa_Tauto_2019/Work/Version 1.1 TestBench 2.3/suite/TestBench_Automation.qft" os-version="amd64-Windows 10-10.0" pstate="0" qftest-build="17220" qftest-version="4.6.0" relname=".../TestBench_Automation.qft" runid="190624160430" sourcefile=".../QFTestReport.qrz" state="0" type="qftest" vstate="3" xfile="QFTestReport_report.xml">
+  <comment>(c) 2014 imbus AG
+Version 1.1</comment>
+  <summary duration="3045" errors="0" exceptions="1" expectederrors="0" realtime="3886" time="2019-06-24 16:04:30" timestamp="1561385070228" warnings="0">
+    <exceptions/>
+    <errors/>
+    <warnings/>
+  </summary>
+  <testset implemented="true" name="Standalone test executor" nodeid="_1nlZ" plainname="Standalone test executor" pstate="0" qname="Standalone test executor" ref="N66504" state="0" vstate="3">
+    <summary duration="593" errors="0" exceptions="1" expectederrors="0" realtime="1434" time="16:04:30.239" timestamp="1561385070239" warnings="0">
+      <exceptions/>
+      <errors/>
+      <warnings/>
+    </summary>
+    <testcase implemented="true" name="Load automation properties" nodeid="_1nlP" plainname="Load automation properties" pstate="0" qname="Standalone test executor.Load automation properties" ref="N66537" state="0" vstate="0">
+      <summary duration="148" errors="0" exceptions="0" expectederrors="0" realtime="148" time="16:04:30.251" timestamp="1561385070251" warnings="0">
+        <exceptions/>
+        <errors/>
+        <warnings/>
+      </summary>
+    </testcase>
+    <testcase implemented="true" name="TestBench test" nodeid="_6" plainname="TestBench test" pstate="0" qname="Standalone test executor.TestBench test" ref="N66566" state="0" vstate="3">
+      <summary duration="422" errors="0" exceptions="1" expectederrors="0" realtime="1263" time="16:04:30.406" timestamp="1561385070406" warnings="0">
+        <exceptions>
+          <exception pstate="3" ref="N66639" state="3" vstate="3">
+            <screenshot height="1440" src="images/QFTestReport_report_ss0.png" width="3440">
+              <thumbnail height="288" src="images/QFTestReport_report_tn0.png" width="688"/>
+            </screenshot>
+            <screenshot height="720" src="images/QFTestReport_report_ss1.png" width="1280">
+              <thumbnail height="144" src="images/QFTestReport_report_tn1.png" width="256"/>
+            </screenshot>
+            <message>&lt;html&gt;&lt;body&gt;Das Skript ist mit der folgenden Meldung fehlgeschlagen:&lt;pre&gt;startup failed:
+Script_start_iTEP: 1: unable to resolve class de.imbus.itep.Itep
+ @ line 1, column 1.
+   import de.imbus.itep.Itep
+   ^
+
+Script_start_iTEP: 2: unable to resolve class de.imbus.itep.ItepConstant
+ @ line 2, column 1.
+   import static de.imbus.itep.ItepConstant.ITEP_OK
+   ^
+
+2 errors
+
+&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</message>
+          </exception>
+        </exceptions>
+        <errors/>
+        <warnings/>
+      </summary>
+      <exception link="N66639"/>
+    </testcase>
+  </testset>
+</test-suite>

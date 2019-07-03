@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE RootStep>
+<RootStep id="_3" name="root" version="4.6.0">
+  <reference>../TestBench_Automation.qft</reference>
+  <TestCase id="_1nla" name="Standalone test executor">
+    <TestCall calledtest="../TestBench_Automation.qft#Standalone test executor"
+              id="_1nlb"/>
+  </TestCase>
+  <PackageRoot id="_2">
+    <Package id="_4" name="1 simple data types"/>
+    <Package id="_5" name="2 complex data types"/>
+    <Package id="_6" name="3 interactions">
+      <Procedure id="_G" name="start CarConfigurator">
+        <comment> Start CarKonfigurator and change language to english (menu entry "Sprachen -&gt; Englisch")</comment>
+        <SetGlobalStep id="_K" varname="client">
+          <default>Car Configurator</default>
+        </SetGlobalStep>
+        <TryStep id="_M">
+          <ClientStopper client="$(client)" id="_N"/>
+          <CatchSequence exception="TestException" id="_O" maxerror="0"/>
+        </TryStep>
+        <JavaClientStarter class="de.qfs.apps.qftest.demo.multi.CarConfigurator"
+                           client="$(client)"
+                           directory="${qftest:dir.version}/demo/carconfig"
+                           executable="${qftest:java}" id="_P">
+          <parameter>-classpath</parameter>
+          <parameter>../../qflib/qfdemo.jar;../../qflib/qflib.jar;../../lib/looks.jar</parameter>
+          <arg>-lang</arg>
+          <arg>en</arg>
+        </JavaClientStarter>
+        <ClientWaiter client="$(client)" id="_Q"/>
+      </Procedure>
+      <Procedure id="_A" name="choose vehicle">
+        <variable name="vehicle name"/>
+        <comment>Choose a vehicle from the vehicels list
+
+@param	vehicle name	vehicle name</comment>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="TabbedPane.Vehicles" event="MOUSE_MPRC"
+                        id="_1nSN" modifiers="16"/>
+        <ProcedureCall id="_1ju-"
+                       procedure="qfs.swing.table.getRowIndexOfCell"
+                       retvarname="index">
+          <variable name="id">VehicleTable</variable>
+          <variable name="column">Model</variable>
+          <variable name="row">$(vehicle name)</variable>
+          <variable name="columnSeparator">@</variable>
+          <variable name="rowSeparator">@</variable>
+        </ProcedureCall>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="VehicleTable@Model&amp;$(index)"
+                        event="MOUSE_MPRC" id="_1nSO" modifiers="16"/>
+      </Procedure>
+      <Procedure id="_9" name="choose special model">
+        <variable name="special model name"/>
+        <comment>choose a special model from special model list
+
+@param	special model name	special model name</comment>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="TabbedPane.Specials" event="MOUSE_MPRC"
+                        id="_1nnl" modifiers="16"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="SpecialsCombo.button" event="MOUSE_MPRC"
+                        id="_1nnn" modifiers="16"/>
+        <IfSequence id="_1nno"
+                    test="&#34;$(special model name)&#34; == &#34;-&#34;">
+          <MouseEventStep clicks="1" client="$(client)"
+                          component="popupInvokerName:_SpecialsCombo.list.-_no_special_model_-"
+                          event="MOUSE_MPRC" id="_1nnp" modifiers="16"/>
+          <ElseSequence id="_1nnq">
+            <MouseEventStep clicks="1" client="$(client)"
+                            component="popupInvokerName:_SpecialsCombo.list.$(special model name)"
+                            event="MOUSE_MPRC" id="_1nnr" modifiers="16"/>
+          </ElseSequence>
+        </IfSequence>
+      </Procedure>
+      <Procedure id="_8" name="choose add-on">
+        <variable name="add-on name"/>
+        <comment>choose add-on
+
+@param	add-on name	add-on name</comment>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="TabbedPane.Accessories" event="MOUSE_MPRC"
+                        id="_1nns" modifiers="16"/>
+        <IfSequence id="_1nnt"
+                    test="&#34;$(add-on name)&#34; &lt;&gt; &#34;-&#34;"/>
+        <ProcedureCall id="_1nnu"
+                       procedure="qfs.swing.table.getRowIndexOfCell"
+                       retvarname="index">
+          <variable name="id">AccessoryTable</variable>
+          <variable name="column">Description</variable>
+          <variable name="row">$(add-on name)</variable>
+          <variable name="columnSeparator">@</variable>
+          <variable name="rowSeparator">@</variable>
+        </ProcedureCall>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="AccessoryTable._&amp;$(index)"
+                        event="MOUSE_MPRC" id="_1nnw" modifiers="16"/>
+      </Procedure>
+      <Procedure id="_7" name="check price">
+        <variable name="price"/>
+        <comment> check price of selected configuration against given price
+
+@param	price	price</comment>
+        <CheckStringStep client="$(client)" component="CalculatedPrice"
+                         id="_1nnx">
+          <text>$(price)</text>
+        </CheckStringStep>
+      </Procedure>
+      <Procedure id="_1nnE" name="open Help menu">
+        <MouseEventStep clicks="1" client="$(client)" component="mHelp"
+                        event="MOUSE_MPRC" id="_1nnG" modifiers="16"/>
+      </Procedure>
+      <Procedure id="_B" name="close CarConfigurator">
+        <comment>Close VSR-DreamCar</comment>
+        <MouseEventStep clicks="1" client="$(client)" component="mFile"
+                        event="MOUSE_MPRC" id="_1nny" modifiers="16"/>
+        <MouseEventStep clicks="1" client="$(client)" component="miExit"
+                        event="MOUSE_MPRC" id="_1nnz" modifiers="16"/>
+      </Procedure>
+    </Package>
+  </PackageRoot>
+  <ExtraSequence id="_H">
+    <BasicSequence id="_W" name="Aufnahme 27.06.19 15:08">
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="VehicleTable@Model&amp;1" event="MOUSE_MPRC"
+                      id="_X" modifiers="16"/>
+    </BasicSequence>
+    <BasicSequence id="_1nlq" name="Aufnahme 28.06.19 11:05">
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="TabbedPane@Vehicles" event="MOUSE_MPRC"
+                      id="_1nlr" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="TabbedPane@Vehicles" event="MOUSE_MPRC"
+                      id="_1nls" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="TabbedPane@Specials" event="MOUSE_MPRC"
+                      id="_1nlt" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="SpecialsCombo.button" event="MOUSE_MPRC"
+                      id="_1nlu" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="listInvokerName:_SpecialsCombo@- no special model -"
+                      event="MOUSE_MPRC" id="_1nlv" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="SpecialsCombo.button" event="MOUSE_MPRC"
+                      id="_1nlw" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="listInvokerName:_SpecialsCombo@Gomera"
+                      event="MOUSE_MPRC" id="_1nlx" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="TabbedPane@Accessories" event="MOUSE_MPRC"
+                      id="_1nly" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@Description&amp;0"
+                      event="MOUSE_MPRC" id="_1nlz" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@&amp;0" event="MOUSE_MPRC"
+                      id="_1nl+" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@&amp;1" event="MOUSE_MPRC"
+                      id="_1nl-" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@&amp;2" event="MOUSE_MPRC"
+                      id="_1nm0" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@Description&amp;2"
+                      event="MOUSE_MPRC" id="_1nm1" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="AccessoryTable@Description&amp;0"
+                      event="MOUSE_MPRC" id="_1nm2" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="TabbedPane@Vehicles" event="MOUSE_MPRC"
+                      id="_1nm3" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="VehicleTable@Model&amp;0" event="MOUSE_MPRC"
+                      id="_1nm4" modifiers="16"/>
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="VehicleTable@Model&amp;0" event="MOUSE_MPRC"
+                      id="_1nm5" modifiers="4" popup="true"/>
+    </BasicSequence>
+  </ExtraSequence>
+  <WindowList id="_I">
+    <WindowStep class="javax.swing.JFrame"
+                feature="JCarConfigurator - Version 1" height="400"
+                id="JCarConfigurator" name="JCarConfigurator" uid="_1nTa"
+                width="350" x="0" y="0">
+      <ComponentStep class="javax.swing.JTabbedPane" classcount="1"
+                     classindex="0" height="209" id="TabbedPane"
+                     name="TabbedPane" uid="_1nTb" width="334" x="8" y="63">
+        <SubItemStep id="TabbedPane.Vehicles" uid="_1nTc">
+          <primary>Vehicles</primary>
+        </SubItemStep>
+        <ComponentStep class="de.qfs.apps.qftest.demo.multi.CarConfigurator$VehicleTablePanel"
+                       classcount="1" classindex="0" feature="Tab: Vehicles"
+                       height="177" id="VehicleTablePanel"
+                       name="VehicleTablePanel" uid="_1nTd" width="329" x="2"
+                       y="29">
+          <ComponentStep class="javax.swing.JScrollPane" classcount="1"
+                         classindex="0" height="151" id="VehicleScrollPane"
+                         name="VehicleScrollPane" uid="_1nTe" width="321"
+                         x="4" y="22">
+            <ComponentStep class="javax.swing.JTable" classcount="1"
+                           classindex="0" id="VehicleTable"
+                           name="VehicleTable" uid="_1nTf">
+              <SubItemStep id="VehicleTable.Model" uid="_1nTg">
+                <primary>Model</primary>
+              </SubItemStep>
+              <ComponentStep class="javax.swing.CellRendererPane"
+                             classcount="1" classindex="0" height="0"
+                             id="VehicleTable.com" uid="_1nnI" width="0" x="0"
+                             y="0">
+                <extrafeature name="qfs:class" negate="false" regexp="false"
+                              state="0">javax.swing.CellRendererPane</extrafeature>
+                <extrafeature name="qfs:systemclass" negate="false"
+                              regexp="false" state="0">javax.swing.CellRendererPane</extrafeature>
+              </ComponentStep>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="0"
+                           feature="Vertical"
+                           id="VehicleScrollPane.scrollbarVertical"
+                           uid="_1nnJ" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="0"
+                           feature="Down" height="0"
+                           id="VehicleScrollPane.buttonDown" uid="_1nnK"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="1"
+                           feature="Up" height="0"
+                           id="VehicleScrollPane.buttonUp" uid="_1nnL"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="1"
+                           feature="Horizontal"
+                           id="VehicleScrollPane.scrollbarHorizontal"
+                           uid="_1nnM" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="2"
+                           feature="Right" height="0"
+                           id="VehicleScrollPane.buttonRight" uid="_1nnN"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="3"
+                           feature="Left" height="0"
+                           id="VehicleScrollPane.buttonLeft" uid="_1nnO"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="TableHeader" classcount="1" classindex="0"
+                           id="VehicleScrollPane.header" uid="_1nnP">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.table.JTableHeader</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">TableHeader</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.table.JTableHeader</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="javax.swing.CellRendererPane" classcount="2"
+                           classindex="1" height="0"
+                           id="VehicleScrollPane.com" uid="_1nnQ" width="0"
+                           x="1" y="1">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.CellRendererPane</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.CellRendererPane</extrafeature>
+            </ComponentStep>
+          </ComponentStep>
+        </ComponentStep>
+        <SubItemStep id="TabbedPane.Specials" uid="_1nTh">
+          <primary>Specials</primary>
+        </SubItemStep>
+        <ComponentStep class="de.qfs.apps.qftest.demo.multi.CarConfigurator$SpecialsPanel"
+                       classcount="1" classindex="0" feature="Tab: Specials"
+                       height="177" id="SpecialsPanel" name="SpecialsPanel"
+                       uid="_1nTi" width="329" x="2" y="29">
+          <ComponentStep class="javax.swing.JComboBox" classcount="1"
+                         classindex="0" height="27" id="SpecialsCombo"
+                         name="SpecialsCombo" uid="_1nTj" width="321" x="4"
+                         y="22">
+            <ComponentStep class="com.jgoodies.looks.plastic.PlasticComboBoxButton"
+                           classcount="1" classindex="0"
+                           id="SpecialsCombo.button" uid="_1nTk"/>
+            <ComponentStep class="javax.swing.CellRendererPane" classcount="1"
+                           classindex="0" height="0" id="SpecialsCombo.com"
+                           uid="_1nnR" width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.CellRendererPane</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.CellRendererPane</extrafeature>
+            </ComponentStep>
+          </ComponentStep>
+          <ComponentStep class="Panel" classcount="1" classindex="0"
+                         height="116" id="SpecialsAreaScrollPane"
+                         name="SpecialsAreaScrollPane" uid="_1nnS" width="321"
+                         x="4" y="52">
+            <extrafeature name="qfs:class" negate="false" regexp="false"
+                          state="0">javax.swing.JScrollPane</extrafeature>
+            <extrafeature name="qfs:genericclass" negate="false"
+                          regexp="false" state="0">Panel</extrafeature>
+            <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                          state="0">javax.swing.JScrollPane</extrafeature>
+            <extrafeature name="qfs:type" negate="false" regexp="false"
+                          state="0">Panel:ScrollPanel</extrafeature>
+            <ComponentStep class="TextArea" classcount="1" classindex="0"
+                           id="SpecialsArea" name="SpecialsArea" uid="_1nnT">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JTextArea</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">TextArea</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JTextArea</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="0"
+                           feature="Vertical"
+                           id="SpecialsAreaScrollPane.scrollbarVertical"
+                           uid="_1nnU" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="0"
+                           feature="Down" height="0"
+                           id="SpecialsAreaScrollPane.buttonDown" uid="_1nnV"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="1"
+                           feature="Up" height="0"
+                           id="SpecialsAreaScrollPane.buttonUp" uid="_1nnW"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="1"
+                           feature="Horizontal"
+                           id="SpecialsAreaScrollPane.scrollbarHorizontal"
+                           uid="_1nnX" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="2"
+                           feature="Right" height="0"
+                           id="SpecialsAreaScrollPane.buttonRight" uid="_1nnY"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="3"
+                           feature="Left" height="0"
+                           id="SpecialsAreaScrollPane.buttonLeft" uid="_1nnZ"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+          </ComponentStep>
+          <ComponentStep class="Panel" classcount="1" classindex="0"
+                         height="0" id="SpecialsPanel.panel" uid="_1nna"
+                         width="321" x="4" y="173">
+            <extrafeature name="qfs:class" negate="false" regexp="false"
+                          state="0">javax.swing.JPanel</extrafeature>
+            <extrafeature name="qfs:genericclass" negate="false"
+                          regexp="false" state="0">Panel</extrafeature>
+            <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                          state="0">javax.swing.JPanel</extrafeature>
+          </ComponentStep>
+        </ComponentStep>
+        <SubItemStep id="TabbedPane.Accessories" uid="_1nTp">
+          <primary>Accessories</primary>
+        </SubItemStep>
+        <ComponentStep class="de.qfs.apps.qftest.demo.multi.CarConfigurator$AccessoryTablePanel"
+                       classcount="1" classindex="0"
+                       feature="Tab: Accessories" height="177"
+                       id="AccessoryTablePanel" name="AccessoryTablePanel"
+                       uid="_1nTq" width="329" x="2" y="29">
+          <ComponentStep class="javax.swing.JScrollPane" classcount="1"
+                         classindex="0" height="151" id="AccessoryScrollPane"
+                         name="AccessoryScrollPane" uid="_1nTr" width="321"
+                         x="4" y="22">
+            <ComponentStep class="javax.swing.JTable" classcount="1"
+                           classindex="0" id="AccessoryTable"
+                           name="AccessoryTable" uid="_1nTs">
+              <SubItemStep id="AccessoryTable.Description" uid="_1nUG">
+                <primary>Description</primary>
+              </SubItemStep>
+              <SubItemStep id="AccessoryTable._" uid="_1nUQ">
+                <primary> </primary>
+              </SubItemStep>
+              <ComponentStep class="javax.swing.CellRendererPane"
+                             classcount="1" classindex="0" height="0"
+                             id="AccessoryTable.com" uid="_1nnb" width="0"
+                             x="0" y="0">
+                <extrafeature name="qfs:class" negate="false" regexp="false"
+                              state="0">javax.swing.CellRendererPane</extrafeature>
+                <extrafeature name="qfs:systemclass" negate="false"
+                              regexp="false" state="0">javax.swing.CellRendererPane</extrafeature>
+              </ComponentStep>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="0"
+                           feature="Vertical"
+                           id="AccessoryScrollPane.scrollbarVertical"
+                           uid="_1nnc" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="0"
+                           feature="Down" height="15"
+                           id="AccessoryScrollPane.buttonDown" uid="_1nnd"
+                           width="15" x="305" y="111">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="1"
+                           feature="Up" height="15"
+                           id="AccessoryScrollPane.buttonUp" uid="_1nne"
+                           width="15" x="305" y="25">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="ScrollBar" classcount="2" classindex="1"
+                           feature="Horizontal"
+                           id="AccessoryScrollPane.scrollbarHorizontal"
+                           uid="_1nnf" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">ScrollBar</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.JScrollPane$$ScrollBar</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="2"
+                           feature="Right" height="0"
+                           id="AccessoryScrollPane.buttonRight" uid="_1nng"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="Button" classcount="4" classindex="3"
+                           feature="Left" height="0"
+                           id="AccessoryScrollPane.buttonLeft" uid="_1nnh"
+                           width="0" x="0" y="0">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">com.jgoodies.looks.plastic.PlasticArrowButton</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">Button</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.plaf.metal.MetalScrollButton</extrafeature>
+              <extrafeature name="qfs:type" negate="false" regexp="false"
+                            state="0">Button:ScrollBarButton</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="TableHeader" classcount="1" classindex="0"
+                           id="AccessoryScrollPane.header" uid="_1nni">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.table.JTableHeader</extrafeature>
+              <extrafeature name="qfs:genericclass" negate="false"
+                            regexp="false" state="0">TableHeader</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.table.JTableHeader</extrafeature>
+            </ComponentStep>
+            <ComponentStep class="javax.swing.CellRendererPane" classcount="2"
+                           classindex="1" height="0"
+                           id="AccessoryScrollPane.com" uid="_1nnj" width="0"
+                           x="1" y="1">
+              <extrafeature name="qfs:class" negate="false" regexp="false"
+                            state="0">javax.swing.CellRendererPane</extrafeature>
+              <extrafeature name="qfs:systemclass" negate="false"
+                            regexp="false" state="0">javax.swing.CellRendererPane</extrafeature>
+            </ComponentStep>
+          </ComponentStep>
+          <ComponentStep class="CheckBox" classcount="1" classindex="0"
+                         feature="Add accessories price to final price"
+                         height="24" id="AddAccessoryPriceChkbox"
+                         name="AddAccessoryPriceChkbox" uid="_1nnk"
+                         width="321" x="4" y="149">
+            <extrafeature name="qfs:class" negate="false" regexp="false"
+                          state="0">javax.swing.JCheckBox</extrafeature>
+            <extrafeature name="qfs:genericclass" negate="false"
+                          regexp="false" state="0">CheckBox</extrafeature>
+            <extrafeature name="qfs:label" negate="false" regexp="false"
+                          state="1">Add accessories price to final price</extrafeature>
+            <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                          state="0">javax.swing.JCheckBox</extrafeature>
+          </ComponentStep>
+        </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="com.jgoodies.looks.plastic.PlasticComboBoxUI$PlasticComboPopup"
+                     feature="InvokerName: SpecialsCombo" height="90"
+                     id="popupInvokerName:_SpecialsCombo" uid="_1nTl"
+                     width="321" x="14" y="141">
+        <ComponentStep class="javax.swing.JScrollPane" classcount="1"
+                       classindex="0" height="88"
+                       id="popupInvokerName:_SpecialsCombo.scroll" uid="_1nTm"
+                       width="319" x="1" y="1">
+          <ComponentStep class="javax.swing.JList" classcount="1"
+                         classindex="0"
+                         id="popupInvokerName:_SpecialsCombo.list"
+                         uid="_1nTn">
+            <SubItemStep id="popupInvokerName:_SpecialsCombo.list.-_no_special_model_-"
+                         uid="_1nU4">
+              <primary>- no special model -</primary>
+            </SubItemStep>
+            <SubItemStep id="popupInvokerName:_SpecialsCombo.list.Gomera"
+                         uid="_1nTo">
+              <primary>Gomera</primary>
+            </SubItemStep>
+            <SubItemStep id="popupInvokerName:_SpecialsCombo.list.Jazz"
+                         uid="_1nU5">
+              <primary>Jazz</primary>
+            </SubItemStep>
+            <SubItemStep id="popupInvokerName:_SpecialsCombo.list.Luxus"
+                         uid="_1nU6">
+              <primary>Luxus</primary>
+            </SubItemStep>
+          </ComponentStep>
+        </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="de.qfs.apps.qftest.demo.multi.CarConfigurator$CalculatorPanel"
+                     classcount="1" classindex="0" height="120"
+                     id="CalculatorPanel" name="CalculatorPanel" uid="_1nTu"
+                     width="334" x="8" y="272">
+        <ComponentStep class="javax.swing.JTextField" classcount="4"
+                       classindex="3" feature="Label: Final price" height="20"
+                       id="CalculatedPrice" name="CalculatedPrice" uid="_1nTv"
+                       width="130" x="194" y="95"/>
+      </ComponentStep>
+      <ComponentStep class="javax.swing.JMenuBar" classcount="1"
+                     classindex="0" height="33" id="MenuBar" name="MenuBar"
+                     uid="_1nUH" width="334" x="8" y="30">
+        <ComponentStep class="javax.swing.JMenu" classcount="4" classindex="0"
+                       feature="File" height="29" id="mFile" name="mFile"
+                       uid="_1nUI" width="37" x="2" y="2">
+          <ComponentStep class="javax.swing.JMenuItem" classcount="2"
+                         classindex="1" feature="Exit" height="26" id="miExit"
+                         name="miExit" uid="_1nUK" width="91"/>
+        </ComponentStep>
+        <ComponentStep class="MenuItem" classcount="16" classindex="11"
+                       feature="Help" height="29" id="mHelp" name="mHelp"
+                       uid="_1nnF" width="45" x="211" y="1">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">javax.swing.JMenu</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">MenuItem</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">Help</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JMenu</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+    </WindowStep>
+  </WindowList>
+</RootStep>

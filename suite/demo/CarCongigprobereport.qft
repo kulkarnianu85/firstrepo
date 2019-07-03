@@ -1,0 +1,2239 @@
+<RootStep version="1.7.0" name="root">
+<PackageRoot id="_2">
+
+
+
+
+
+
+      
+  <Package name="Datenbank konfigurieren">
+<Package name="Fahrzeuge">
+<Procedure name="Eintrag prüfen">
+<comment>
+
+@param	Fahrzeug	Fahrzeug</comment>
+<variable name="Fahrzeug"/>
+</Procedure>
+<Procedure name="Fahrzeug anlegen">
+<comment>
+
+@param	Fahrzeug	Fahrzeug</comment>
+<variable name="Fahrzeug"/>
+<ProcedureCall procedure="Datenbank konfigurieren.Fahrzeuge.Fahrzeugname eingeben">
+<variable name="Fahrzeug"/>
+</ProcedureCall>
+<ProcedureCall procedure="Datenbank konfigurieren.Fahrzeuge.Fahrzeugpreis eingeben">
+<variable name="Fahrzeug"/>
+</ProcedureCall>
+<ProcedureCall procedure="Datenbank konfigurieren.Fahrzeuge.Eintrag prüfen">
+<variable name="Fahrzeug"/>
+</ProcedureCall>
+</Procedure>
+<Procedure name="Fahrzeug wählen">
+<comment>
+
+@param	Fahrzeugname	Fahrzeugname</comment>
+<variable name="Fahrzeugname"/>
+</Procedure>
+<Procedure name="Fahrzeugname eingeben">
+<comment>
+
+@param	Fahrzeugname	Fahrzeugname</comment>
+<variable name="Fahrzeugname"/>
+</Procedure>
+<Procedure name="Fahrzeugpreis eingeben">
+<comment>
+
+@param	Preis	Preis</comment>
+<variable name="Preis"/>
+</Procedure>
+<Procedure name="Löschung prüfen">
+<comment>
+
+@param	Fahrzeugname	Fahrzeugname</comment>
+<variable name="Fahrzeugname"/>
+</Procedure>
+</Package>
+<Package name="Sondermodelle"/>
+<Package name="Zubehör"/>
+      6917529030000011269
+      Button
+      iTB23-DT-120
+      
+      3
+      
+      6917529030000011269
+      -1
+      
+      
+      
+      
+      
+      
+      
+        
+          6611695
+          Standard
+           Standard Buttons
+          1024
+          
+          
+            
+              6917529030000510035
+              OK
+              1024
+              
+              
+            
+            
+              6917529030000510036
+              Abbruch
+              2048
+              
+              
+            
+            
+              6917529030000510037
+              Neu
+              3072
+              
+              
+            
+            
+              6917529030000510038
+              Ändern
+              4096
+              
+              
+            
+            
+              6917529030000510039
+              Löschen
+              5120
+              
+              
+            
+          
+        
+      
+      
+      
+    
+      6917529030000011270
+      Einstellung
+      iTB23-DT-121
+      
+      3
+      
+      6917529030000011270
+      -1
+      
+      
+      
+      
+      
+      
+      
+        
+          6611697
+          Menüs
+          Menüs
+          1024
+          
+          
+            
+              6917529030000510040
+              Fahrzeuge
+              1024
+              
+              
+            
+            
+              6917529030000510041
+              Zubehör
+              2048
+              
+              
+            
+            
+              6917529030000510042
+              Sondermodelle
+              3072
+              
+              
+            
+          
+        
+      
+      
+      
+    <Procedure name="Button drücken">
+<comment>
+
+@param	Button	Button</comment>
+<variable name="Button"/>
+</Procedure>
+<Procedure name="Einstellungen öffnen">
+<comment>
+
+@param	Einstellung	Einstellung</comment>
+<variable name="Einstellung"/>
+</Procedure>
+</Package>
+  <Package name="Preisberechnung">
+<Package name="atomare DT">
+        6917529030000011271
+        Fahrzeugname
+        iTB23-DT-122
+        
+        3
+        Name eines Fahrzeugs.
+        6917529030000011271
+        -1
+        
+        
+        
+        
+        
+        
+        
+          
+            6611703
+            gültig
+            gültige Fahrzeuge
+            1024
+            
+            
+              
+                6917529030000510043
+                Rolo
+                1024
+                
+                
+              
+              
+                6917529030000510044
+                Minigolf
+                2048
+                
+                
+              
+              
+                6917529030000510045
+                Rassant
+                3072
+                
+                
+              
+              
+                6917529030000510046
+                Rassant Family
+                4096
+                
+                
+              
+              
+                6917529030000510047
+                I5
+                5120
+                
+                
+              
+            
+          
+          
+            6611704
+            ungültig
+            ungültig Fahrzeuge
+            2048
+            
+            
+              
+                6917529030000510048
+                Panzer
+                1024
+                
+                
+              
+              
+                6917529030000510049
+                Prolo
+                2048
+                
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011272
+        Preis
+        iTB23-DT-123
+        
+        3
+        Preis eines Fahrzeugs, eines Sondermodells, eines Zubehörs, einer Konfiguration.
+        6917529030000011272
+        -1
+        
+        
+        
+        
+        
+        
+        
+          
+            6611706
+            Aufpreis für Sondermodell
+            Aufpreis für Sondermodell
+            1024
+            
+            
+              
+                6917529030000510050
+                0,00 &#8364;
+                0
+                
+                
+              
+              
+                6917529030000510051
+                1.049,00 &#8364;
+                1024
+                
+                
+              
+              
+                6917529030000510052
+                1.413,00 &#8364;
+                2048
+                
+                
+              
+              
+                6917529030000510053
+                2.499,99 &#8364;
+                3072
+                
+                
+              
+            
+          
+          
+            6611707
+            Aufpreis für Zubehörteil
+            Aufpreis für Zubehörteil
+            2048
+            
+            
+              
+                6917529030000510054
+                990,00 &#8364;
+                1024
+                
+                
+              
+              
+                6917529030000510055
+                470,00 &#8364;
+                2048
+                
+                
+              
+              
+                6917529030000510056
+                360,00 &#8364;
+                3072
+                
+                
+              
+              
+                6917529030000510057
+                210,00 &#8364;
+                4096
+                
+                
+              
+              
+                6917529030000510058
+                490,00 &#8364;
+                5120
+                
+                
+              
+              
+                6917529030000510059
+                26,00 &#8364;
+                6144
+                
+                
+              
+              
+                6917529030000510060
+                900,00 &#8364;
+                7168
+                
+                
+              
+              
+                6917529030000510061
+                1.200,00 &#8364;
+                8192
+                
+                
+              
+            
+          
+          
+            6611708
+            Basispreis
+            Basispreis
+            3072
+            
+            
+              
+                6917529030000510062
+                12.300,00 &#8364;
+                0
+                
+                
+              
+              
+                6917529030000510063
+                15.000,00 &#8364;
+                1024
+                
+                
+              
+              
+                6917529030000510064
+                17.000,00 &#8364;
+                2048
+                
+                
+              
+              
+                6917529030000510065
+                18.500,00 &#8364;
+                3072
+                
+                
+              
+              
+                6917529030000510066
+                29.000,00 &#8364;
+                4096
+                
+                
+              
+            
+          
+          
+            6611709
+            Gesamtpreis
+            Gesamtpreis
+            4096
+            
+            
+              
+                6917529030000510067
+                18.049,00 &#8364;
+                1024
+                
+                
+              
+              
+                6917529030000510068
+                19.913,00 &#8364;
+                2048
+                
+                
+              
+              
+                6917529030000510069
+                14.703,00 &#8364;
+                3072
+                
+                
+              
+              
+                6917529030000510070
+                16.409,00 &#8364;
+                4096
+                
+                
+              
+              
+                6917529030000510071
+                31.859,99 &#8364;
+                5120
+                
+                
+              
+              
+                6917529030000510072
+                17.536,40 &#8364;
+                6144
+                
+                
+              
+            
+          
+          
+            6611710
+            rabattierte Preise
+            rabattierte Preise
+            5120
+            
+            
+              
+                6917529030000510073
+                11.316,00 &#8364;
+                1024
+                
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011273
+        Rabatt
+        iTB23-DT-124
+        
+        3
+         Rabatt des Händlers
+        6917529030000011273
+        -1
+        
+        
+        
+        
+        
+        
+        
+          
+            6611712
+            gültig
+            gültig
+            1024
+            
+            
+              
+                6917529030000510074
+                0
+                1024
+                
+                
+              
+              
+                6917529030000510075
+                8
+                2048
+                
+                
+              
+              
+                6917529030000510076
+                12
+                3072
+                
+                
+              
+              
+                6917529030000510077
+                20
+                4096
+                
+                
+              
+              
+                6917529030000510078
+                100
+                5120
+                
+                
+              
+              
+                6917529030000510079
+                2,5
+                6144
+                
+                
+              
+              
+                6917529030000510080
+                0,55
+                7168
+                
+                
+              
+            
+          
+          
+            6611713
+            ungültig
+            ungültig
+            2048
+            
+            
+              
+                6917529030000510081
+                -1
+                1024
+                
+                
+              
+              
+                6917529030000510082
+                101
+                2048
+                
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011274
+        Sondermodellname
+        iTB23-DT-125
+        
+        3
+        Name eines Sondermodells
+        6917529030000011274
+        -1
+        
+        
+        
+        
+        
+        
+        
+          
+            6611715
+            gültig
+            gültig
+            1024
+            
+            
+              
+                6917529030000510083
+                -
+                1024
+                
+                
+              
+              
+                6917529030000510084
+                Jazz
+                2048
+                
+                
+              
+              
+                6917529030000510085
+                Gomera
+                3072
+                
+                
+              
+              
+                6917529030000510086
+                Luxus
+                4096
+                
+                
+              
+            
+          
+          
+            6611716
+            ungültig
+            ungültig
+            2048
+            
+            
+              
+                6917529030000510087
+                Basic
+                1024
+                
+                
+              
+              
+                6917529030000510088
+                08/15
+                2048
+                
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011275
+        Zubehörname
+        iTB23-DT-126
+        
+        3
+        Zubehörname
+        6917529030000011275
+        -1
+        
+        
+        
+        
+        
+          
+            6611718
+            -
+            nix drin
+            1024
+            
+              
+                4611686020000050241
+                1024
+                
+                  
+                    1
+                    
+                    -
+                  
+                
+              
+            
+          
+          
+            6611719
+            RSF
+            Radio, Sportfelgen, Fußmatten
+            2048
+            
+              
+                4611686020000050242
+                1024
+                
+                  
+                    1
+                    
+                    Radio mit CD-Wechsler
+                  
+                
+              
+              
+                4611686020000050243
+                2048
+                
+                  
+                    1
+                    
+                    Fussmatten
+                  
+                
+              
+              
+                4611686020000050244
+                3072
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                
+              
+            
+          
+        
+        
+          
+            6611720
+            gültig
+            gültiges Zubehör
+            1024
+            
+            
+              
+                6917529030000510089
+                -
+                0
+                
+                
+              
+              
+                6917529030000510090
+                ABS
+                1024
+                
+                
+              
+              
+                6917529030000510091
+                Radio mit CD-Wechsler
+                2048
+                
+                
+              
+              
+                6917529030000510092
+                Lederlenkrad
+                3072
+                
+                
+              
+              
+                6917529030000510093
+                Beheizbarer Aussenspiegel
+                4096
+                
+                
+              
+              
+                6917529030000510094
+                Fensterheber hinten
+                5120
+                
+                
+              
+              
+                6917529030000510095
+                Fussmatten
+                6144
+                
+                
+              
+              
+                6917529030000510096
+                Sportfelgen
+                7168
+                
+                
+              
+              
+                6917529030000510097
+                Zentralverriegelung
+                8192
+                
+                
+              
+            
+          
+          
+            6611721
+            ungültig
+            ungültiges Zubehör
+            2048
+            
+            
+              
+                6917529030000510098
+                Schleudersitz
+                1024
+                
+                
+              
+              
+                6917529030000510099
+                Protonenkanone
+                2048
+                
+                
+              
+            
+          
+        
+        
+        
+      </Package>
+<Package name="komplexe DT">
+        6917529030000011276
+        Fahrzeug
+        iTB23-DT-127
+        
+        3
+        Fahrzeug
+        6917529030000011276
+        -1
+        
+        
+        
+          
+            6611824
+            Fahrzeugname
+            
+            0
+            Fahrzeugname
+          
+          
+            6611825
+            Fahrzeugpreis
+            
+            0
+            Preis
+          
+        
+        
+          
+            6611724
+            alle
+            alle initialen Einträge
+            1024
+            
+              
+                4611686020000050245
+                1024
+                
+                  
+                    1
+                    
+                    Rolo
+                  
+                  
+                    1
+                    
+                    12.300,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050246
+                2048
+                
+                  
+                    1
+                    
+                    Minigolf
+                  
+                  
+                    1
+                    
+                    15.000,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050247
+                3072
+                
+                  
+                    1
+                    
+                    Rassant
+                  
+                  
+                    1
+                    
+                    17.000,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050248
+                4096
+                
+                  
+                    1
+                    
+                    Rassant Family
+                  
+                  
+                    1
+                    
+                    18.500,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050249
+                5120
+                
+                  
+                    1
+                    
+                    I5
+                  
+                  
+                    1
+                    
+                    29.000,00 &#8364;
+                  
+                
+              
+            
+          
+        
+        
+          
+            6611725
+            gültig
+            gültig
+            1024
+            
+            
+              
+                6917529030000510100
+                Rolo
+                1024
+                
+                  
+                    1
+                    
+                    Rolo
+                  
+                  
+                    1
+                    
+                    12.300,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510101
+                Minigolf
+                2048
+                
+                  
+                    1
+                    
+                    Minigolf
+                  
+                  
+                    1
+                    
+                    15.000,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510102
+                Rassant
+                3072
+                
+                  
+                    1
+                    
+                    Rassant
+                  
+                  
+                    1
+                    
+                    17.000,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510103
+                Rassant Family
+                4096
+                
+                  
+                    1
+                    
+                    Rassant Family
+                  
+                  
+                    1
+                    
+                    18.500,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510104
+                I5
+                5120
+                
+                  
+                    1
+                    
+                    I5
+                  
+                  
+                    1
+                    
+                    29.000,00 &#8364;
+                  
+                
+              
+            
+          
+          
+            6611726
+            ungültig
+            ungültig
+            2048
+            
+            
+              
+                6917529030000510105
+                ungültiger Name
+                1024
+                
+                  
+                    1
+                    
+                    Panzer
+                  
+                  
+                    1
+                    
+                    12.300,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510106
+                ungültiger Fahrzeugpreis
+                2048
+                
+                  
+                    1
+                    
+                    Rassant
+                  
+                  
+                    1
+                    
+                    14.703,00 &#8364;
+                  
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011277
+        Konfiguration
+        iTB23-DT-128
+        
+        3
+        vollständige Konfiguration
+        6917529030000011277
+        -1
+        
+        
+        
+          
+            6611850
+            Gesamtpreis
+            
+            0
+            Preis
+          
+          
+            6611851
+            Zubehörteil
+            
+            2
+            Zubehörteil
+          
+          
+            6611852
+            Sondermodell
+            
+            3
+            Sondermodell
+          
+          
+            6611853
+            Fahrzeug
+            
+            3
+            Fahrzeug
+          
+        
+        
+        
+        
+          
+            6611728
+            Aufpreis der Teile in Sondermodell
+            Aufpreis der Teile in Sondermodell
+            1024
+            
+            
+              
+                6917529030000510107
+                einfach
+                1024
+                
+                  
+                    1
+                    
+                    15.000,00 &#8364;
+                  
+                  
+                    2
+                    
+                    -
+                  
+                  
+                    1
+                    
+                    -
+                  
+                  
+                    1
+                    
+                    Minigolf
+                  
+                
+              
+              
+                6917529030000510108
+                Rassant Jazz Variation1
+                2048
+                
+                  
+                    1
+                    
+                    18.049,00 &#8364;
+                  
+                  
+                    2
+                    
+                    ABS, Fensterheber hinten
+                  
+                  
+                    1
+                    
+                    Jazz
+                  
+                  
+                    1
+                    
+                    Rassant
+                  
+                
+              
+              
+                6917529030000510109
+                Rassant Family Variation 2
+                3072
+                
+                  
+                    1
+                    
+                    19.913,00 &#8364;
+                  
+                  
+                    2
+                    
+                    RSF+LLR
+                  
+                  
+                    1
+                    
+                    Gomera
+                  
+                  
+                    1
+                    
+                    Rassant Family
+                  
+                
+              
+            
+          
+          
+            6611729
+            Aufpreis der Teile teilweise in Sondermodell
+            Aufpreis der Teile teilweise in Sondermodell
+            2048
+            
+            
+              
+                6917529030000510110
+                Rolo Gomera
+                1024
+                
+                  
+                    1
+                    
+                    14.703,00 &#8364;
+                  
+                  
+                    2
+                    
+                    ABS, Fensterheber hinten
+                  
+                  
+                    1
+                    
+                    Gomera
+                  
+                  
+                    1
+                    
+                    Rolo
+                  
+                
+              
+              
+                6917529030000510111
+                Minigolf Jazz
+                2048
+                
+                  
+                    1
+                    
+                    16.409,00 &#8364;
+                  
+                  
+                    2
+                    
+                    RSF+LLR
+                  
+                  
+                    1
+                    
+                    Jazz
+                  
+                  
+                    1
+                    
+                    Minigolf
+                  
+                
+              
+            
+          
+          
+            6611730
+            Aufpreis der Teile nicht in Sondermodell
+            Aufpreis der Teile nicht in Sondermodell
+            3072
+            
+            
+              
+                6917529030000510112
+                Luxusklasse
+                1024
+                
+                  
+                    1
+                    
+                    31.859,99 &#8364;
+                  
+                  
+                    2
+                    
+                    RSF+LLR
+                  
+                  
+                    1
+                    
+                    Luxus
+                  
+                  
+                    1
+                    
+                    I5
+                  
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011278
+        Sondermodell
+        iTB23-DT-129
+        
+        3
+        Sondermodell
+        6917529030000011278
+        -1
+        
+        
+        
+          
+            6611878
+            Sondermodellname
+            
+            0
+            Sondermodellname
+          
+          
+            6611879
+            Sondermodellpreis
+            
+            0
+            Preis
+          
+        
+        
+        
+        
+          
+            6611732
+            gültig
+            gültig
+            1024
+            
+            
+              
+                6917529030000510113
+                -
+                1024
+                
+                  
+                    1
+                    
+                    -
+                  
+                  
+                    1
+                    
+                    0,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510114
+                Jazz
+                2048
+                
+                  
+                    1
+                    
+                    Jazz
+                  
+                  
+                    1
+                    
+                    1.049,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510115
+                Gomera
+                3072
+                
+                  
+                    1
+                    
+                    Gomera
+                  
+                  
+                    1
+                    
+                    1.413,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510116
+                Luxus
+                4096
+                
+                  
+                    1
+                    
+                    Luxus
+                  
+                  
+                    1
+                    
+                    2.499,99 &#8364;
+                  
+                
+              
+            
+          
+        
+        
+        
+      
+        6917529030000011279
+        Zubehör
+        iTB23-DT-130
+        
+        3
+        Zubehör
+        6917529030000011279
+        -1
+        
+        
+        
+          
+            6611888
+            Zubehörteil
+            
+            3
+            Zubehörteil
+          
+        
+        
+          
+            6611734
+            -
+            -
+            1024
+            
+              
+                4611686020000050250
+                1024
+                
+                  
+                    1
+                    
+                    -
+                  
+                
+              
+            
+          
+          
+            6611735
+            ABS, Fensterheber
+            ABS, Fensterheber hinten
+            2048
+            
+              
+                4611686020000050251
+                1024
+                
+                  
+                    1
+                    
+                    ABS
+                  
+                
+              
+              
+                4611686020000050252
+                2048
+                
+                  
+                    1
+                    
+                    Fensterheber hinten
+                  
+                
+              
+            
+          
+          
+            6611736
+            ZVR, Fensterheber
+            Zentralverriegelung, Fensterheber hinten
+            3072
+            
+              
+                4611686020000050253
+                1024
+                
+                  
+                    1
+                    
+                    Zentralverriegelung
+                  
+                
+              
+              
+                4611686020000050254
+                2048
+                
+                  
+                    1
+                    
+                    Fensterheber hinten
+                  
+                
+              
+            
+          
+          
+            6611737
+            RSF
+            Radio, Sportfelgen, Fußmatten
+            4096
+            
+              
+                4611686020000050255
+                1024
+                
+                  
+                    1
+                    
+                    Radio
+                  
+                
+              
+              
+                4611686020000050256
+                2048
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                
+              
+              
+                4611686020000050257
+                3072
+                
+                  
+                    1
+                    
+                    Fußmatten
+                  
+                
+              
+            
+          
+          
+            6611738
+            Lederlenkrad
+            Lederlenkrad
+            5120
+            
+              
+                4611686020000050258
+                1024
+                
+                  
+                    1
+                    
+                    Lederlenkrad
+                  
+                
+              
+            
+          
+          
+            6611739
+            RSF+LLR
+            Radio, Sportfelgen, Fußmatten, Lederlenkrad
+            6144
+            
+              
+                4611686020000050259
+                1024
+                
+                  
+                    1
+                    
+                    Radio
+                  
+                
+              
+              
+                4611686020000050260
+                2048
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                
+              
+              
+                4611686020000050261
+                3072
+                
+                  
+                    1
+                    
+                    Fußmatten
+                  
+                
+              
+              
+                4611686020000050262
+                4096
+                
+                  
+                    1
+                    
+                    Lederlenkrad
+                  
+                
+              
+            
+          
+        
+        
+        
+        
+        
+      
+        6917529030000011280
+        Zubehörteil
+        iTB23-DT-131
+        
+        3
+        Zubehörteil
+        6917529030000011280
+        -1
+        
+        
+        
+          
+            6611902
+            Zubehörname
+            
+            0
+            Zubehörname
+          
+          
+            6611903
+            Zubehörpreis
+            
+            0
+            Preis
+          
+        
+        
+          
+            6611741
+            -
+            leer
+            1024
+            
+            
+          
+          
+            6611742
+            ABS, Fensterheber hinten
+            ABS, Fensterheber hinten
+            2048
+            
+              
+                4611686020000050263
+                1024
+                
+                  
+                    1
+                    
+                    ABS
+                  
+                  
+                    1
+                    
+                    990,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050264
+                2048
+                
+                  
+                    1
+                    
+                    Fensterheber hinten
+                  
+                  
+                    1
+                    
+                    490,00 &#8364;
+                  
+                
+              
+            
+          
+          
+            6611743
+            ZVR-F
+            Zentralverriegelung, Fensterheber
+            3072
+            
+              
+                4611686020000050265
+                1024
+                
+                  
+                    1
+                    
+                    Fensterheber hinten
+                  
+                  
+                    1
+                    
+                    490,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050266
+                2048
+                
+                  
+                    1
+                    
+                    Zentralverriegelung
+                  
+                  
+                    1
+                    
+                    1.200,00 &#8364;
+                  
+                
+              
+            
+          
+          
+            6611744
+            RSF
+            Radio, Sportfelgen, Fußmatten
+            4096
+            
+              
+                4611686020000050267
+                1024
+                
+                  
+                    1
+                    
+                    Radio mit CD-Wechsler
+                  
+                  
+                    1
+                    
+                    470,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050268
+                2048
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                  
+                    1
+                    
+                    900,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050269
+                3072
+                
+                  
+                    1
+                    
+                    Fussmatten
+                  
+                  
+                    1
+                    
+                    26,00 &#8364;
+                  
+                
+              
+            
+          
+          
+            6611745
+            RSF+LLR
+            Radio, Sportfelgen, Fußmatten, Lederlenkrad
+            5120
+            
+              
+                4611686020000050270
+                1024
+                
+                  
+                    1
+                    
+                    Radio mit CD-Wechsler
+                  
+                  
+                    1
+                    
+                    470,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050271
+                2048
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                  
+                    1
+                    
+                    900,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050272
+                3072
+                
+                  
+                    1
+                    
+                    Fussmatten
+                  
+                  
+                    1
+                    
+                    26,00 &#8364;
+                  
+                
+              
+              
+                4611686020000050273
+                4096
+                
+                  
+                    1
+                    
+                    Lederlenkrad
+                  
+                  
+                    1
+                    
+                    360,00 &#8364;
+                  
+                
+              
+            
+          
+        
+        
+          
+            6611746
+            gültig
+            gültiges Zubehör
+            1024
+            
+            
+              
+                6917529030000510117
+                -
+                1024
+                
+                  
+                    1
+                    
+                    -
+                  
+                  
+                    1
+                    
+                    0,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510118
+                ABS
+                2048
+                
+                  
+                    1
+                    
+                    ABS
+                  
+                  
+                    1
+                    
+                    990,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510119
+                Radio
+                3072
+                
+                  
+                    1
+                    
+                    Radio mit CD-Wechsler
+                  
+                  
+                    1
+                    
+                    470,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510120
+                Lederlenkrad
+                4096
+                
+                  
+                    1
+                    
+                    Lederlenkrad
+                  
+                  
+                    1
+                    
+                    360,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510121
+                Beheizbarer Außenspiegel
+                5120
+                
+                  
+                    1
+                    
+                    Beheizbarer Aussenspiegel
+                  
+                  
+                    1
+                    
+                    210,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510122
+                Fensterheber hinten
+                6144
+                
+                  
+                    1
+                    
+                    Fensterheber hinten
+                  
+                  
+                    1
+                    
+                    490,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510123
+                Fußmatten
+                7168
+                
+                  
+                    1
+                    
+                    Fussmatten
+                  
+                  
+                    1
+                    
+                    26,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510124
+                Sportfelgen
+                8192
+                
+                  
+                    1
+                    
+                    Sportfelgen
+                  
+                  
+                    1
+                    
+                    900,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510125
+                Zentralverriegelung
+                9216
+                
+                  
+                    1
+                    
+                    Zentralverriegelung
+                  
+                  
+                    1
+                    
+                    1.200,00 &#8364;
+                  
+                
+              
+            
+          
+          
+            6611747
+            ungültig
+            ungültiges Zubehör
+            2048
+            
+            
+              
+                6917529030000510126
+                falscher Name
+                1024
+                
+                  
+                    1
+                    
+                    Schleudersitz
+                  
+                  
+                    1
+                    
+                    990,00 &#8364;
+                  
+                
+              
+              
+                6917529030000510127
+                Falscher Preis
+                2048
+                
+                  
+                    1
+                    
+                    ABS
+                  
+                  
+                    1
+                    
+                    0,00 &#8364;
+                  
+                
+              
+            
+          
+        
+        
+        
+      </Package>
+<Procedure name="CarConfig Beenden">
+<comment>Car Konfigurator beenden (Ende Button drücken)</comment>
+</Procedure>
+<Procedure name="CarConfig Starten">
+<comment>Car Konfigurator starten</comment>
+</Procedure>
+<Procedure name="Fahrzeug konfigurieren">
+<comment> Fahrzeug konfigurieren mit den Unterschritten:
+    * Fahrzeug wählen
+    * Zubehör wählen
+    * Sondermodell wählen
+
+@param	Konfiguration	Konfiguration</comment>
+<variable name="Konfiguration"/>
+<ProcedureCall procedure="Preisberechnung.Fahrzeug wählen">
+<variable name="Konfiguration"/>
+</ProcedureCall>
+<ProcedureCall procedure="Preisberechnung.Zubehör wählen">
+<variable name="Konfiguration"/>
+</ProcedureCall>
+<ProcedureCall procedure="Preisberechnung.Sondermodell wählen">
+<variable name="Konfiguration"/>
+</ProcedureCall>
+</Procedure>
+<Procedure name="Fahrzeug wählen">
+<comment>Fahrzeug aus der Liste der Fahrzeuge wählen
+
+@param	Fahrzeugname	Fahrzeugname</comment>
+<variable name="Fahrzeugname"/>
+</Procedure>
+<Procedure name="Preis prüfen">
+<comment>Angezeigten Preis gegen den Sollpreis prüfen
+
+@param	Preis	Preis</comment>
+<variable name="Preis"/>
+</Procedure>
+<Procedure name="Rabatt gewähren">
+<comment> Den vom Händler gewährten Rabatt ins Rabattfeld eintragen.
+
+@param	Rabatt	Rabatt</comment>
+<variable name="Rabatt"/>
+</Procedure>
+<Procedure name="Sondermodell wählen">
+<comment> Sondermodell aus der Liste der Sondermodelle auswählen.
+
+@param	Sondermodellname	Sondermodellname</comment>
+<variable name="Sondermodellname"/>
+</Procedure>
+<Procedure name="Zubehör wählen">
+<comment> Zubehör aus der Liste der Zubehörteile auswählen.
+
+@param	Zubehörname	Zubehörname</comment>
+<variable name="Zubehörname"/>
+</Procedure>
+      4611686020000001244
+      Fahrzeug gewählt
+      iTB23-CD-60
+      
+      Ein Fahrzeug ist ausgewählt
+      4611686020000001244
+      -1
+      
+      
+      
+      
+    
+      4611686020000001245
+      Konfiguration gültig
+      iTB23-CD-61
+      
+      Die gewählte Fahrzeugkonfiguration ist gültig im Sinne von "beim Händler bestellbar".
+      4611686020000001245
+      -1
+      
+      
+      
+      
+    
+      4611686020000001246
+      Sondermodell gewählt
+      iTB23-CD-62
+      
+      Ein Sondermodell ist ausgewählt.
+      4611686020000001246
+      -1
+      
+      
+      
+      
+    
+      4611686020000001247
+      Zubehör gewählt
+      iTB23-CD-63
+      
+      Ein Zubehör ist ausgewählt.
+      4611686020000001247
+      -1
+      
+      
+      
+      
+    </Package>
+      
+</PackageRoot>
+<ExtraSequence/>
+<WindowList/>
+</RootStep>

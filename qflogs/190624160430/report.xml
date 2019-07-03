@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<report-summary basedir="" duration="3045" end-date="2019-06-24 16:04:34" executed-by="anujak" execution-date="2019-06-24 16:04:30" host="actaea" java-version="1.8.0_152-b16" os-version="amd64-Windows 10-10.0" qftest-version="4.6.0" realtime="3886" result="3" runid="190624160430" sourcedir="" time="16:04:30.228">
+  <summary duration="3045" errors="0" exceptedtests="1" exceptions="1" executedtests="2" expectederrors="0" expectedfailedtests="0" failedtests="0" flakyerrors="0" flakyexceptions="0" nonimpltests="0" passedtests="1" realtime="3886" skippedtests="0" skippedtestsets="0" tests="2" time="16:04:30.228" warnings="0"/>
+  <test-suite basedir="" executed-by="anujak" execution-date="2019-06-24 16:04:30" hfile="QFTestReport_report.html" host="actaea" java-version="1.8.0_152-b16" name="P:/Mdf/TeamBank/8162_TeBa_Tauto_2019/Work/Version 1.1 TestBench 2.3/suite/TestBench_Automation.qft" os-version="amd64-Windows 10-10.0" pstate="0" qftest-build="17220" qftest-version="4.6.0" relname=".../TestBench_Automation.qft" runid="190624160430" sourcefile=".../QFTestReport.qrz" state="0" type="qftest" vstate="3" xfile="QFTestReport_report.xml">
+    <summary duration="3045" errors="0" exceptedtests="1" exceptions="1" executedtests="2" expectederrors="0" expectedfailedtests="0" failedtests="0" nonimpltests="0" passedtests="1" realtime="3886" skippedtests="0" skippedtestsets="0" tests="2" time="2019-06-24 16:04:30" timestamp="1561385070228" warnings="0"/>
+    <exception name="TestBench test" pstate="3" qname="Standalone test executor.TestBench test" ref="N66639" state="3" vstate="3">
+      <screenshot height="1440" src="images/QFTestReport_report_ss0.png" width="3440">
+        <thumbnail height="288" src="images/QFTestReport_report_tn0.png" width="688"/>
+      </screenshot>
+      <screenshot height="720" src="images/QFTestReport_report_ss1.png" width="1280">
+        <thumbnail height="144" src="images/QFTestReport_report_tn1.png" width="256"/>
+      </screenshot>
+      <message>&lt;html&gt;&lt;body&gt;Das Skript ist mit der folgenden Meldung fehlgeschlagen:&lt;pre&gt;startup failed:
+Script_start_iTEP: 1: unable to resolve class de.imbus.itep.Itep
+ @ line 1, column 1.
+   import de.imbus.itep.Itep
+   ^
+
+Script_start_iTEP: 2: unable to resolve class de.imbus.itep.ItepConstant
+ @ line 2, column 1.
+   import static de.imbus.itep.ItepConstant.ITEP_OK
+   ^
+
+2 errors
+
+&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</message>
+    </exception>
+    <comment>(c) 2014 imbus AG
+Version 1.1</comment>
+  </test-suite>
+</report-summary>
